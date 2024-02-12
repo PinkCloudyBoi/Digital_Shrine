@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="stylesheet.css" rel="stylesheet">
+    </head>
+    
+  <img id="titlecard" src="titlecard.png">
+
+<body style id="bg">
+    <img id="bg" src="assets/backgroundtop.png" width=100%>
+    
+<!--TEXT-->
+    
+    <img id="poem" src="poem.png">
+    
+<!--TRINKETS-->
+    
+    <img id="necklace" src="assets/necklace.png">
+    
+    <img id="beads" src="assets/beads.png">
+    
+    <img id="lavender" src="lavender.png">
+
+<!--ALTAR-->
+    
+    <img id="altarbase" src="assets/altar%20base.png">
+        
+    <img id="altarfront" src="assets/altar%20front.png">
+
+<!--CANDLES-->
+    
+    <!--left side-->
+    <img id="candleleftsmall" src="assets/candle%20small.png">
+    <img id="candleleftmedium" src="assets/candle%20medium.png">
+    <img id="candleleftlarge" src="assets/candle%20large.png">
+    
+    <!--right side-->
+    <img id="candlerightsmall" src="assets/candle%20small.png">
+    <img id="candlerightmedium" src="assets/candle%20medium.png">
+    <img id="candlerightlarge" src="assets/candle%20large.png">
+    
+    <!--flames left-->
+    <img id="flamels" src="assets/1353988_poppysicle_flickering-flame.gif">
+    
+    <img id="flamelm" src="assets/1353988_poppysicle_flickering-flame.gif">
+    
+    <img id="flamell" src="assets/1353988_poppysicle_flickering-flame.gif">
+    
+    <!--flames right-->
+    <img id="flamers" src="assets/1353988_poppysicle_flickering-flame.gif">
+    
+    <img id="flamerm" src="assets/1353988_poppysicle_flickering-flame.gif">
+    
+    <img id="flamerl" src="assets/1353988_poppysicle_flickering-flame.gif">
+    
+<!--BOOK-->
+
+<div id="book">
+    <div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 8</div>
+  <img src="Scan.jpeg" style="width:100%">
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 8</div>
+  <img src="Scan%201.jpeg" style="width:100%">
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 8</div>
+  <img src="Scan%202.jpeg" style="width:100%">
+</div>
+    
+<div class="mySlides fade">
+  <div class="numbertext">4 / 8</div>
+  <img src="Scan%203.jpeg" style="width:100%">
+</div>
+    
+<div class="mySlides fade">
+  <div class="numbertext">5 / 8</div>
+  <img src="Scan%204.jpeg" style="width:100%">
+</div>
+    
+<div class="mySlides fade">
+  <div class="numbertext">6 / 8</div>
+  <img src="Scan%205.jpeg" style="width:100%">
+</div>
+    
+<div class="mySlides fade">
+  <div class="numbertext">7 / 8</div>
+  <img src="Scan%206.jpeg" style="width:100%">
+</div>
+    
+<div class="mySlides fade">
+  <div class="numbertext">8 / 8</div>
+  <img src="Scan%207.jpeg" style="width:100%">
+</div>
+
+<a class="prev" onclick="plusSlides(-1)">
+    <div class="figure">
+        <img class="buttonleftpressed image-main" src="assets/button%20left.png" width="30px">
+        <img class="buttonleftpressed image-hover" src="assets/button%20left%20pressed.png" width="30px">
+    </div>
+</a>
+    
+<a class="next" onclick="plusSlides(1)">
+    <div class="figure">
+        <img class="buttonrightpressed image-main" src="assets/button%20right.png" width="30px">
+        <img class="buttonrightpressed image-hover" src="assets/button%20right%20pressed.png" width="30px">
+    </div>
+</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+</div>
+</div>
+    
+<!--JS-->
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+    
+<script>
+//Make the DIV element draggagle:
+dragElement(document.getElementById("necklace"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+</script>
+    
+<script>
+//Make the DIV element draggagle:
+dragElement(document.getElementById("beads"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+</script>
+    
+<script>
+//Make the DIV element draggagle:
+dragElement(document.getElementById("lavender"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+</script>
+    
+<script>
+        document.getElementById("titlecard").onclick = function() {
+            document.getElementById("titlecard").style.display = "none";
+        }
+ 
+    </script>
+    
+</body> 
+</html>
